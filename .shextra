@@ -1,0 +1,147 @@
+#!/bin/bash
+
+# add to the .bashrc [ -f ~/.shextra ] && source ~/.shextra
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+export PATH=~/bin:~/go/bin:~/.local/bin:~/google-cloud-sdk/bin:/snap/bin:/usr/local/bin:/bin:/usr/bin:/usr/games:/sbin:/usr/sbin:/usr/local/sbin:~/go/bin:/usr/local/go/bin:/usr/local/opt/llvm/bin:~/.cargo/bin:~/anaconda3/bin:/usr/local/opt/mysql-client/bin/:$PATH
+
+HISTCONTROL=ignoreboth
+shopt -s histappend
+HISTSIZE=1000
+HISTFILESIZE=2000
+shopt -s checkwinsize
+#shopt -s globstar
+
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+export TERM=xterm-256color
+
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+#https://html-online.com/articles/colored-icon-characters-copy-paste/
+PS1='\w \u 🍎$ '
+
+if [ -z ${INSIDE_EMACS} ]
+then
+    #fortune | cowsay | lolcat
+    #eval "$(starship init bash)"
+    #PS1='\u@\h \w$ '
+    echo 
+else
+    echo inside EMACS
+    #PS1='\w λ '
+fi
+
+[ -f ~/google-cloud-sdk/path.bash.inc ] && . ~/google-cloud-sdk/path.bash.inc
+[ -f ~/google-cloud-sdk/completion.bash.inc ] && . ~/google-cloud-sdk/completion.bash.inc
+
+[ -f ~/.cargo/env ] && . ~/.cargo/env
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/bin/z.sh ] && source ~/bin/z.sh
+
+export NVM_DIR="~/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
+
+export PATH="$PATH:~/.rvm/bin"
+[ -f ~/.rvm/scripts/rvm ] && ~/.rvm/scripts/rvm
+[ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh
+
+for fn in $HOME/bin/z.sh /usr/local/opt/fzf/shell/key-bindings.bash $HOME/ENV-gcloud.txt $HOME/.local/share/lscolors.sh bin/fzf-key-bindings.sh bin/fzf-completion.sh bin/fzf-extras.sh
+do
+    [ -f $fn ] && . $fn
+done
+
+export BAT_THEME=ansi
+
+qq() {
+    clear
+    logpath="$TMPDIR/q"
+    if [[ -z "$TMPDIR" ]]; then
+        logpath="/tmp/q"
+    fi
+    if [[ ! -f "$logpath" ]]; then
+        echo 'Q LOG' > "$logpath"
+    fi
+    tail -100f -- "$logpath"
+}
+
+rmqq() {
+    logpath="$TMPDIR/q"
+    if [[ -z "$TMPDIR" ]]; then
+        logpath="/tmp/q"
+    fi
+    if [[ -f "$logpath" ]]; then
+        rm "$logpath"
+    fi
+    qq
+}
+
+#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
+
+#export AIRFLOW_HOME=~/airflow
+#export GOPATH=~/go
+
+#export GOROOT=~/go
+#export BROWSER=
+
+alias ll='ls -GalF'
+alias la='ls -GA'
+alias l='ls -aGCF'
+#alias ls=exa
+
+alias j=jobs
+
+#export LDFLAGS="-L/usr/local/opt/libffi/lib"
+#export CPPFLAGS="-I/usr/local/opt/libffi/include"
+#export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+#export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+#export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
+#export DENO_INSTALL=~/.deno
+#source ~/.asdf/asdf.sh
+
+#export JAVA_HOME=$HOME/bin/java/jdk-11.0.4+11/Contents/Home
+#export GRADLE_HOME=$HOME/bin/gradle/gradle-5.6.2
+
+#source ~/venv-3.9.5/bin/activate
+
+#export PATH="$DENO_INSTALL/bin:$PATH"
+#export PATH=$JAVA_HOME/bin:$PATH
+#export PATH=$GRADLE_HOME/bin:$PATH
+
+if [ -d /home/linuxbrew ];then
+    export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
+    . /home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.bash
+fi
+#export PATH=`$HOME/scripts/nodupepath.sh`
+
+#export SDKMAN_DIR="~/.sdkman"
+#[[ -s "~/.sdkman/bin/sdkman-init.sh" ]] && source "~/.sdkman/bin/sdkman-init.sh"
+
+export SHEXTRA=done
