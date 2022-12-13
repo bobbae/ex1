@@ -1,0 +1,45 @@
+## protocol buffers
+
+https://developers.google.com/protocol-buffers/docs/proto3
+
+## grpc-go
+
+git clone -b v1.43.0 https://github.com/grpc/grpc-go
+
+https://grpc.io/docs/protoc-installation/
+
+apt install -y protobuf-compiler
+
+go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
+
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+
+https://grpc.io/docs/languages/go/quickstart/
+
+https://grpc.io/docs/languages/go/basics/
+
+## grpc-gateway
+
+https://github.com/grpc-ecosystem/grpc-gateway
+
+https://grpc-ecosystem.github.io/grpc-gateway/docs/tutorials/introduction/
+
+$ go install \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
+    google.golang.org/protobuf/cmd/protoc-gen-go \
+    google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
+https://github.com/bufbuild/buf
+
+cd grpc-gateway/examples/internal
+
+## grpc-rest-hello
+
+mkdir -p google/api
+curl https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto > google/api/annotations.proto
+curl https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto > google/api/http.proto
+
+protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative helloworld/helloworld.proto
