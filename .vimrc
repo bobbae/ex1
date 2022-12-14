@@ -1,3 +1,5 @@
+let mapleader = ","
+set clipboard=unnamedplus
 "https://github.com/tabnine/YouCompleteMe
 "https://github.com/tabnine/YouCompleteMe#installation
 "install vundle https://github.com/VundleVim/Vundle.vim#quick-start
@@ -30,8 +32,8 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'zxqfl/tabnine-vim'
-Plugin 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+"Plugin 'zxqfl/tabnine-vim'
+"Plugin 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,3 +65,18 @@ set encoding=utf-8
 set t_Co=256
 set laststatus=0
 
+"git clone https://github.com/govim/govim.git ~/.vim/pack/plugins/start/govim
+"git clone https://github.com/pangloss/vim-javascript.git ~/.vim/pack/vim-javascript/start/vim-javascript
+"git clone --recurse-submodules https://github.com/python-mode/python-mode.git
+"cd python-mode
+"cp -R * ~/.vim
+":helptags ~/.vim/doc/
+set ic
+set sm
+set smartindent
+syntax on
+filetype plugin indent on
+set mouse=a
+set encoding=utf-8
+set t_Co=256
+set laststatus=0
