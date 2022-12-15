@@ -1,9 +1,12 @@
 let mapleader = ","
 set clipboard=unnamedplus
-"https://github.com/tabnine/YouCompleteMe
-"https://github.com/tabnine/YouCompleteMe#installation
+
+"git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
+
 "install vundle https://github.com/VundleVim/Vundle.vim#quick-start
+"https://github.com/tabnine/YouCompleteMe#installation
 "then do :PluginInstall
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -15,6 +18,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -32,8 +36,16 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
-"Plugin 'zxqfl/tabnine-vim'
-"Plugin 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+
+" https://github.com/codota/tabnine-vim/issues/107
+"git checkout python3
+"find . -name "*.pyc" -delete
+"python3 install.py 
+
+Plugin 'zxqfl/tabnine-vim'
+Plugin 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+
+Plugin 'jremmen/vim-ripgrep'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,3 +92,13 @@ set mouse=a
 set encoding=utf-8
 set t_Co=256
 set laststatus=0
+
+noremap <leader>f  <C-f>
+noremap <leader>b  <C-b>
+noremap <leader>d  <C-d>
+noremap <leader>u  <C-u>
+noremap <leader>i  <C-i>
+noremap <leader>ww  <C-w>w
+noremap <leader>wo  <C-w>o
+noremap <leader>o  <C-o>
+noremap <leader>]  <C-]>
