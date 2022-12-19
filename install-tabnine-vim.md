@@ -1,12 +1,15 @@
-let mapleader = ","
-set clipboard=unnamedplus
+## set up vundle
 
-"git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-"install vundle https://github.com/VundleVim/Vundle.vim#quick-start
-"https://github.com/tabnine/YouCompleteMe#installation
-"then do :PluginInstall
+Read
 
+https://github.com/VundleVim/Vundle.vim#about
+
+### .vimrc
+The .vimrc should look like
+
+```
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -18,7 +21,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -37,15 +39,9 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
-" https://github.com/codota/tabnine-vim/issues/107
-"git checkout python3
-"find . -name "*.pyc" -delete
-"python3 install.py 
-
 Plugin 'zxqfl/tabnine-vim'
 Plugin 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
-Plugin 'jremmen/vim-ripgrep'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -61,44 +57,26 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-"git clone https://github.com/govim/govim.git ~/.vim/pack/plugins/start/govim
-"git clone https://github.com/pangloss/vim-javascript.git ~/.vim/pack/vim-javascript/start/vim-javascript
-"git clone --recurse-submodules https://github.com/python-mode/python-mode.git
-"cd python-mode
-"cp -R * ~/.vim
-":helptags ~/.vim/doc/
-set ic
-set sm
-set smartindent
-syntax on
-filetype plugin indent on
-set mouse=a
-set encoding=utf-8
-set t_Co=256
-set laststatus=0
+```
 
-"git clone https://github.com/govim/govim.git ~/.vim/pack/plugins/start/govim
-"git clone https://github.com/pangloss/vim-javascript.git ~/.vim/pack/vim-javascript/start/vim-javascript
-"git clone --recurse-submodules https://github.com/python-mode/python-mode.git
-"cd python-mode
-"cp -R * ~/.vim
-":helptags ~/.vim/doc/
-set ic
-set sm
-set smartindent
-syntax on
-filetype plugin indent on
-set mouse=a
-set encoding=utf-8
-set t_Co=256
-set laststatus=0
+### clone tabnine youcompleteme
 
-noremap <leader>f  <C-f>
-noremap <leader>b  <C-b>
-noremap <leader>d  <C-d>
-noremap <leader>u  <C-u>
-noremap <leader>i  <C-i>
-noremap <leader>ww  <C-w>w
-noremap <leader>wo  <C-w>o
-noremap <leader>o  <C-o>
-noremap <leader>]  <C-]>
+git clone https://github.com/tabnine/YouCompleteMe ~/.vim/bundle/YouCompleteMe
+
+### Run plugin install
+
+Launch vim and run :PluginInstall
+
+To install from command line: vim +PluginInstall +qall
+
+## vim tabnine install
+
+sudo apt install build-essential cmake vim-nox python3-dev
+sudo apt install mono-complete golang nodejs default-jdk npm
+
+### run install.py
+
+in ~/.vim/bundle/YouCompleteMe
+
+./install.py --all
+
