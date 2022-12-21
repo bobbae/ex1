@@ -9,7 +9,6 @@ import (
 	"github.com/bobbae/q"
 	expect "github.com/google/goexpect"
 
-	"github.com/golang/glog"
 	"github.com/ziutek/telnet"
 )
 
@@ -19,27 +18,34 @@ const (
 )
 
 func main() {
+	q.O = "stderr"
+	q.P = ".*"
+
 	address := flag.String("address", "", "address of telnet server")
 	user := flag.String("user", "", "username to use")
 	password := flag.String("password", "", "password to use")
 
-	userRE := regexp.MustCompile("username:")
-	passRE := regexp.MustCompile("password:")
+	userRE := regexp.MustCompile("Username:")
+	passRE := regexp.MustCompile("Password:")
 	promptRE := regexp.MustCompile("#")
 
 	flag.Parse()
 
 	exp, _, err := telnetSpawn(*address, timeout, expect.Verbose(true))
+
 	if err != nil {
-		glog.Exitf("telnetSpawn(%q,%v) failed: %v", *address, timeout, err)
+		q.Q(err)
+		return
 	}
 
+	q.Q("telnet connected")
 	defer func() {
 		if err := exp.Close(); err != nil {
-			glog.Infof("exp.Close failed: %v", err)
+			q.Q(err)
 		}
 	}()
 
+	q.Q("expect user prompt")
 	exp.Expect(userRE, timeout)
 	exp.Send(*user + "\n")
 	exp.Expect(passRE, timeout)
