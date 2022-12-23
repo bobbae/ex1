@@ -7,6 +7,7 @@ set clipboard=unnamedplus
 "https://github.com/tabnine/YouCompleteMe#installation
 "then do :PluginInstall
 
+set number
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -93,12 +94,6 @@ set encoding=utf-8
 set t_Co=256
 set laststatus=0
 
-noremap <leader>f  <C-f>
-noremap <leader>b  <C-b>
-noremap <leader>d  <C-d>
-noremap <leader>u  <C-u>
-noremap <leader>i  <C-i>
-noremap <leader>ww  <C-w>w
-noremap <leader>wo  <C-w>o
-noremap <leader>o  <C-o>
-noremap <leader>]  <C-]>
+noremap <leader>b  :b#<CR>
+noremap <leader>g  :w<CR>:GoBuild<CR>
+noremap <leader>.  :GoDef<CR>

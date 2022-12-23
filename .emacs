@@ -37,7 +37,7 @@
 (which-function-mode 1)
 
 (require 'company)
-(require 'company-go)
+;;(require 'company-go)
 
 (setq company-tooltip-limit 20)
 (setq company-idle-delay .3)   
@@ -49,6 +49,8 @@
 
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
+(require 'company-go)
+(require 'company-shell)
 
 (add-hook 'go-mode-hook
           #'(lambda()
@@ -324,7 +326,7 @@ if the symbol is -foo, then expand to module-name-foo."
  '(display-time-mode t)
  '(fci-rule-color "#073642")
  '(package-selected-packages
-   '(company-ctags company-rtags company-shell neotree ecb company-tabnine go-mode s autobookmarks json-mode protobuf-mode magit magit-filenotify magit-find-file magit-gh-pulls magit-gitflow magit-imerge magit-tbdiff magit-topgit magithub flycheck-inline flycheck-gometalinter flycheck-yamllint yaml-mode multishell ssh ssh-config-mode ssh-tunnels tramp-term company-go multi-term bubbleberry-theme go-errcheck go-imports ag))
+   '(go-guru company-ctags company-rtags company-shell neotree ecb company-tabnine go-mode s autobookmarks json-mode protobuf-mode magit magit-filenotify magit-find-file magit-gh-pulls magit-gitflow magit-imerge magit-tbdiff magit-topgit magithub flycheck-inline flycheck-gometalinter flycheck-yamllint yaml-mode multishell ssh ssh-config-mode ssh-tunnels tramp-term company-go multi-term bubbleberry-theme go-errcheck go-imports ag))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)
@@ -354,12 +356,15 @@ if the symbol is -foo, then expand to module-name-foo."
 ;;  '(default ((t (:family "Ubuntu Mono derivative Powerline" :slant normal :weight normal :height 140 normal)))))
 
 
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(default ((t (:family "Delugia Nerd Font" :slant normal :weight normal :height 180 normal)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Delugia Nerd Font" :slant normal :weight normal :height 180 normal)))))
-
-
-
+ )
