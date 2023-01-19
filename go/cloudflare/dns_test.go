@@ -5,14 +5,11 @@ import (
 	"os"
 	"strings"
 	"testing"
-
-	log "github.com/bobbae/logrus"
 )
 
 var user, key, domain string
 
 func TestInit(t *testing.T) {
-	log.SetLevel(log.DebugLevel)
 
 	user = os.Getenv("CF_USER")
 	key = os.Getenv("CF_KEY")

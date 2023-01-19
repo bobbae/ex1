@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"strings"
 
-	log "github.com/bobbae/logrus"
 	cloudflare "github.com/cloudflare/cloudflare-go"
 )
 
@@ -63,7 +62,7 @@ func GetDNSRecords(zone string) ([]cloudflare.DNSRecord, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	records, err := api.DNSRecords(zoneID, cloudflare.DNSRecord{})
 	if err != nil {
 		return nil, err
@@ -116,8 +115,6 @@ func CreateDNSRecord(zone, name, rtype, content string, ttl int, proxy bool) err
 	if err != nil {
 		return fmt.Errorf("cannot create DNS record for zone %s, %v", zone, err)
 	}
-
-	log.Debugf("create DNS record returns response, %v", resp)
 
 	return nil
 }
