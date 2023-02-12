@@ -1,3 +1,5 @@
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("milkbox" . "http://melpa.milkbox.net/packags/"))
 ;; package-install company, company-go, company-tabnine, company-shell
 ;; then run company-tabnine-install-binary
 (package-initialize)
@@ -102,8 +104,6 @@
         (define-key map key nil)
         (message  "%s unbound for %s" key keymap))))
 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-;;(add-to-list 'package-archives '("milkbox" . "http://melpa.milkbox.net/packags/"))
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
