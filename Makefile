@@ -259,7 +259,7 @@ common-tools-nodejs:
 
 common-tools-golang:
 	if [ -z `which go`  ] ; then \
-		cd /usr/local && sudo wget https://golang.org/dl/go1.18.1.linux-amd64.tar.gz &&  sudo tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz; \
+		cd /usr/local && sudo wget https://golang.org/dl/go1.20.linux-amd64.tar.gz &&  sudo tar -C /usr/local -xzf go1.20.linux-amd64.tar.gz; \
 		if [ -f /usr/local/bin/go ]; then \
 			/usr/local/bin/go version ; \
 		else \
