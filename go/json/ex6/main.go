@@ -26,4 +26,11 @@ func main() {
 	}
 	fmt.Println(logs)
 	fmt.Println(logs.Items[0])
+	type Cmd struct {
+		Command string      `json:"command"`
+	}
+	commandList := []Cmd{}
+	err = json.Unmarshal([]byte(`[ {"command": "hello 1 2 3"}, {"command": "there 5 7 7" } ]`),
+				&commandList)
+	fmt.Println(commandList)
 }

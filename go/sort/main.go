@@ -1,9 +1,14 @@
 package main
 
 import (
-	"fmt"
 	"sort"
+	"github.com/qeof/q"
 )
+
+func init(){
+	q.P = ".*"
+	q.O = "stderr"
+}
 
 type Element struct {
 	Name string
@@ -24,8 +29,13 @@ func main() {
 	e2:= Element{Name: "two", Index: 2}
 	e8:= Element{Name: "eight", Index: 8}
 	e9:= Element{Name: "nine", Index: 9}
-	s := []Element{e1,e2,e8,e9}
+	//s := []Element{e1,e2,e8,e9}
+	s := []Element{e8,e2,e9,e1}
 	e5:= Element{Name: "five", Index: 5}
 	s = InsertSorted(s,e5)
-	fmt.Println(s)
+	q.Q(s)
+	sort.Slice(s, func(i,j int)bool{
+		return s[i].Index < s[j].Index
+	})
+	q.Q(s)
 }
